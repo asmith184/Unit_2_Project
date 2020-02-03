@@ -5,8 +5,8 @@
    Tutorial 10
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Aspen Smith
+   Date:   2-3-2020
    
    Filename: tc_cart.js
 	
