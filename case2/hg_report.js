@@ -12,6 +12,8 @@
 	
 */
 
+
+//editing html code to input different values 
 var gameReport = "<h1>" + itemTitle + "</h1> <h2> By: " + itemManufacturer + "</h2>"
 gameReport+= "<img src='hg_" + itemID + ".png' alt= 'id' id='gameImg'/>" 
 gameReport+= "<table> <tr><th>" + itemID + "</th> <td>id</td></tr>"
@@ -21,3 +23,6 @@ gameReport+= "<table> <tr><th>" + itemESRB + "</th> <td>esrb</td></tr>"
 gameReport+= "<table> <tr><th>" + itemCondition +  "</th><td>condition</td></tr>"
 gameReport+= "<table> <tr><th>" + itemRelease + "</th> <td>release</td></tr>"
 gameReport+= "</table>" 
+gameReport+= itemSummary;
+
+document.getElementsByTagName("article")
