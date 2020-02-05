@@ -29,11 +29,34 @@
 */
 
 
+//var that will help to calculate the total amount of donations
+var donationTotal = 0;
 
+// will calculate the donation total
+donors.forEach(calcSum);
 
+//stores html code
+var summaryTable = "<table> <tr><th>Donors</th><td> " + donors.length + "</td></tr>"
+summaryTable += "<tr><th>Total Donations</th> <td>$" + donationTotal.toLocaleString() + "</td></tr> </table>"
 
+//sets the value of donationsummary to summarytable
+document.getElementById("donationSummary").innerHTML = summaryTable;
 
+// finding major donors from the donors variable to create or = majordonors
+var majorDonors = donors.filter(findMajorDonors);
 
+//sorting new var majordonors in descending order
+majorDonors.sort(donorSortDescending);
+
+//new var holding html
+var donorTable = "<table> <caption> Major Donors </caption> <tr><th>Donation</th><th>Donor ID</th>";
+donorTable += "<th>Date</th> <th>Name</th> <th>Address</th>";
+donorTable += "<th>Phone</th> <th>E-mail</th> </tr>";
+donorTable += "</table>";
+
+majorDonors.forEach(writeDonorRow);
+
+document.getElementById("donorTable").innerHTML = donorTable;
 
 
 
@@ -51,13 +74,13 @@ function donorSortDescending(a, b) {
 
 function writeDonorRow(value) {
    donorTable += "<tr>";
-   donorTable += "<td>$" + value[9].toLocaleString() + "</td>";   
+   donorTable += "<td>$" + value[9].toLocaleString() + "</td>";
    donorTable += "<td>" + value[0] + "</td>";
-   donorTable += "<td>" + value[10] + "</td>";   
-   donorTable += "<td>" + value[2] + ", " + value[1] + "</td>";  
-   donorTable += "<td>" + value[3] + "<br />" + value[4] + ", " + value[5] + " " + value[6]  + "</td>";    
-   donorTable += "<td>" + value[7] + "</td>";   
-   donorTable += "<td>" + value[8] + "</td>";         
+   donorTable += "<td>" + value[10] + "</td>";
+   donorTable += "<td>" + value[2] + ", " + value[1] + "</td>";
+   donorTable += "<td>" + value[3] + "<br />" + value[4] + ", " + value[5] + " " + value[6] + "</td>";
+   donorTable += "<td>" + value[7] + "</td>";
+   donorTable += "<td>" + value[8] + "</td>";
    donorTable += "</tr>";
 }
 
