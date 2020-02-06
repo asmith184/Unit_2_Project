@@ -24,7 +24,42 @@
       
 */
 
+//inserting the title
+var reportHTML = "<h1>" + raceTitle + "</h1>"
 
+//for loop that loops through the contents of the race array
+for (var i = 0; i < race.length; i++) {
+   var totalVotes = 0;
+   votes[i].forEach(calcSum);
+   reportHTML += "\
+   <table>\
+   <caption>" + race[i] + "</caption>\
+   <tr><th>Candidate</th><th>Votes</th></tr>";
+
+   reportHTML += candidateRows(i, totalVotes);
+   reportHTML += "</table>";
+}
+
+//
+document.getElementsByTagName("section")[0].innerHTML = reportHTML;
+
+//function to write individual rows for each candidate showing details
+function candidateRows(raceNum, totalVotes) {
+   var rowHTML = "";
+   for (var x = 0; x < 3; x++) {
+      var candidateName = candidate[raceNum][x];
+      var candidateParty = party[raceNum][x];
+      var candidateVotes = votes[raceNum][x];
+      var candidatePercent = calcPercent(candidateVotes, totalVotes);
+      rowHTML += "<tr>" + candidateName + " (" + candidateParty + ")";
+      
+      for (var y = 0; y < candidatePercent; y++){
+         rowHTML += createBar(candidateParty);
+      }
+      rowHTML += "</tr>";
+   }
+   return rowHTML;
+}
 
 
 
@@ -35,6 +70,15 @@ function calcSum(value) {
 
 /* Function to calculate a percentage */
 function calcPercent(value, sum) {
-   return (100*value/sum);
+   return (100 * value / sum);
 }
 
+function createBar(partyType) {
+   var barHTML = "";
+   switch (partyType) {
+      case 'D': barHTML += "<td class='dem'></td>"
+      case 'R': barHTML += "<td class='rep></td>"
+      case 'I': barHTML += "<td class='ind'></td>"
+   }
+   return barHTML;
+}
