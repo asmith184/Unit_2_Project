@@ -5,8 +5,8 @@
    Tutorial 10
    Case Problem 4
 
-   Author: 
-   Date:   
+   Author: Aspen Smith
+   Date:   2-6-2020
    
    Filename: vw_results.js
    
