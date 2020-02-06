@@ -40,7 +40,7 @@ for (var i = 0; i < race.length; i++) {
    reportHTML += "</table>";
 }
 
-//
+//:)
 document.getElementsByTagName("section")[0].innerHTML = reportHTML;
 
 //function to write individual rows for each candidate showing details
@@ -51,8 +51,10 @@ function candidateRows(raceNum, totalVotes) {
       var candidateParty = party[raceNum][x];
       var candidateVotes = votes[raceNum][x];
       var candidatePercent = calcPercent(candidateVotes, totalVotes);
-      rowHTML += "<tr>" + candidateName + " (" + candidateParty + ")";
-      
+      rowHTML += "\
+      <tr>\
+      <td>" + candidateName + " (" + candidateParty + ")</td>\
+      <td>" + candidateVotes.toLocaleString() + " (" + candidatePercent.toFixed(1) + "% )</td>";
       for (var y = 0; y < candidatePercent; y++){
          rowHTML += createBar(candidateParty);
       }
@@ -76,9 +78,12 @@ function calcPercent(value, sum) {
 function createBar(partyType) {
    var barHTML = "";
    switch (partyType) {
-      case 'D': barHTML += "<td class='dem'></td>"
-      case 'R': barHTML += "<td class='rep></td>"
+      case 'D': barHTML += "<td class='dem'></td>";
+      break;
+      case 'R': barHTML += "<td class='rep'></td>"
+      break;
       case 'I': barHTML += "<td class='ind'></td>"
+      break;
    }
    return barHTML;
 }
