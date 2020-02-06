@@ -49,12 +49,15 @@ var majorDonors = donors.filter(findMajorDonors);
 majorDonors.sort(donorSortDescending);
 
 //new var holding html
-var donorTable = "<table> <caption> Major Donors </caption> <tr><th>Donation</th><th>Donor ID</th>";
-donorTable += "<th>Date</th> <th>Name</th> <th>Address</th>";
-donorTable += "<th>Phone</th> <th>E-mail</th> </tr>";
-donorTable += "</table>";
-
+var donorTable = "<table>\
+<caption>Major Donors</caption> \
+<tr>\
+<th>Donation</th><th>Donor ID</th> \
+<th>Date</th><th>Name</th><th>Address</th> \
+<th>Phone</th> <th>E-mail</th>\
+</tr>";
 majorDonors.forEach(writeDonorRow);
+donorTable += "</table>";
 
 document.getElementById("donorTable").innerHTML = donorTable;
 
